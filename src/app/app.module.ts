@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { TicketFormComponent } from './ticket-form/ticket-form.component';
+import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
+
+import { TicketService } from './services/ticket.service'
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TicketFormComponent } from './ticket-form/ticket-form.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    TicketService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
