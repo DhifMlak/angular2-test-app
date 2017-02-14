@@ -1,17 +1,17 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserModule }         from '@angular/platform-browser';
+import { NgModule }              from '@angular/core';
+import { FormsModule }           from '@angular/forms';
+import { HttpModule }            from '@angular/http';
+import { MaterialModule }        from '@angular/material';
 
-import { AppRoutingModule  } from './app-routing.module';
+import { AppRoutingModule  }     from './app-routing.module';
 
-import { CustomersModule } from './customers-subsistem/customers.module';
+import { CustomersModule }       from './customers-subsistem/customers.module';
 
-import { AppComponent } from './app.component';
+import { AppComponent }          from './app.component';
 import { PageNotFoundComponent } from './other/page-not-found/page-not-found.component'
 
-import { TicketService } from './services/ticket.service';
-
+import { TicketService }         from './services/ticket.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { TicketService } from './services/ticket.service';
     FormsModule,
     HttpModule,
     CustomersModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule.forRoot()
   ],
   providers: [
     TicketService
