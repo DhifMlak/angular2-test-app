@@ -3,20 +3,27 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
+import { AppRoutingModule  } from './app-routing.module';
 
-import { TicketService } from './services/ticket.service'
+import { CustomersModule } from './customers-subsistem/customers.module';
+
+import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './other/page-not-found/page-not-found.component'
+
+import { TicketService } from './services/ticket.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TicketFormComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    CustomersModule,
+    AppRoutingModule
   ],
   providers: [
     TicketService
