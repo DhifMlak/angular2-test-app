@@ -12,7 +12,8 @@ import { Ticket } from '../ticket';
 @Injectable()
 export class TicketService {
   private backendUrl = "http://localhost:3000";
-  private createTicketUrl = this.backendUrl + "/tickets"
+  private createTicketUrl  = this.backendUrl + "/tickets";
+  private getTicketsUrl    = this.backendUrl + "/tickets";
 
 
   constructor (private http: Http) {}
@@ -24,6 +25,15 @@ export class TicketService {
     return this.http.post(this.createTicketUrl, JSON.stringify({ ticket: ticket }), options)
        .map(this.extractData)
        .catch(this.handleError);
+  }
+
+  getTickets (): Observable<Ticket[]> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.getTicketsUrl, RequestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {

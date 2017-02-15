@@ -1,1 +1,35 @@
-<md-checkbox>Check me too!</md-checkbox>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Ticket System
+      </a>
+    </div>
+
+     <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active">
+          <a routerLink='./create-ticket' href="#">Create Ticket </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink='./tickets' href="#"> Review Tickets </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
+
+

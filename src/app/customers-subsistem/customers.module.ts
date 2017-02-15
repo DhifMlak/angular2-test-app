@@ -3,11 +3,13 @@ import { CommonModule }          from '@angular/common';
 import { FormsModule }           from '@angular/forms';
 import { MaterialModule }        from '@angular/material';
 
-
 import { CustomersRoutingModule } from './customers-routing.module'
-import { CustomersComponent } from './customers.component';
+import { CustomersComponent }     from './customers.component';
 
 import { TicketFormComponent }   from './ticket-form/ticket-form.component';
+import { ListTicketsComponent } from './list-tickets/list-tickets.component';
+
+import { TruncatePipe  } from './../pipes/truncate.pipe';
 
 
 @NgModule({
@@ -18,8 +20,10 @@ import { TicketFormComponent }   from './ticket-form/ticket-form.component';
     MaterialModule.forRoot()
   ],
   declarations: [
+    CustomersComponent,
     TicketFormComponent,
-    CustomersComponent
+    ListTicketsComponent,
+    TruncatePipe
   ]
 })
 export class CustomersModule { }

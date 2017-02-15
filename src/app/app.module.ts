@@ -12,11 +12,13 @@ import { AppComponent }          from './app.component';
 import { PageNotFoundComponent } from './other/page-not-found/page-not-found.component'
 
 import { TicketService }         from './services/ticket.service';
+import { TruncatePipe } from './truncate.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

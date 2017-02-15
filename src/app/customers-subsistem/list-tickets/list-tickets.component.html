@@ -1,0 +1,18 @@
+<table class="table">
+  <tr>
+    <th> Ticket Id    </th>
+    <th> Title        </th>
+    <th> Category     </th>
+    <th> Description  </th>
+  </tr>
+
+  <tr *ngFor="let ticket of tickets | async" (click)="onSelect(ticket)" >
+    <td class="id-col">          {{ ticket.id                          }}</td>
+    <td class="title-col">       {{ ticket.title | truncate: 25         }}</td>
+    <td class="category-col">    {{ ticket.category                    }}</td>
+    <td class="description-col"> {{ ticket.description | truncate: 50  }}</td>
+  </tr>
+</table>
+
+
+

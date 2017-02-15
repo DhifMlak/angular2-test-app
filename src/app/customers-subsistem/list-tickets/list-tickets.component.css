@@ -1,0 +1,11 @@
+.id-col{
+  width: 90px;
+}
+
+.title-col{
+  font-weight: bold;
+}
+
+.table tr:not(:first-child):hover{
+  background-color: lightsalmon;
+}
