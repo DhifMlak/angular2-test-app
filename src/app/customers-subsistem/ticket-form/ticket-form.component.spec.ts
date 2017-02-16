@@ -9,8 +9,8 @@ import { DebugElement } from '@angular/core';
 import { Observable } from "rxjs/Rx";
 
 import { TicketFormComponent } from './ticket-form.component';
-import { TicketService } from '../../services/ticket.service'
-import { Ticket } from '../../ticket'
+import { TicketService } from '../../services/ticket.service';
+import { Ticket } from '../../ticket';
 
 
 describe('TicketFormComponent', () => {
