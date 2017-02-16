@@ -4,8 +4,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Ticket } from '../../ticket';
 import { TicketService }         from '../../services/ticket.service';
 
-
-
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 
@@ -27,13 +25,12 @@ export class ListTicketsComponent implements OnInit {
   ngOnInit() {
     this.tickets = this.route.params
       .switchMap((params: Params) => {
-        console.log('runs')
         return this.service.getTickets();
       });
   }
 
   onSelect(ticket):void {
-    this.router.navigate(['/tickets', ticket.id]);
+    this.router.navigate([ticket.id], { relativeTo: this.route });
   }
 
 }

@@ -14,11 +14,11 @@ export class TicketService {
   private backendUrl = "http://localhost:3000";
   private createTicketUrl  = this.backendUrl + "/tickets";
   private getTicketsUrl    = this.backendUrl + "/tickets";
-
+  private getTicketUrl     = this.backendUrl + "/tickets";
 
   constructor (private http: Http) {}
 
-  createTicket (ticket: Ticket): Observable<Ticket> {
+  createTicket(ticket: Ticket): Observable<Ticket> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -27,7 +27,7 @@ export class TicketService {
        .catch(this.handleError);
   }
 
-  getTickets (): Observable<Ticket[]> {
+  getTickets(): Observable<Ticket[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -36,10 +36,20 @@ export class TicketService {
       .catch(this.handleError);
   }
 
+  getTicket(id: number | string): Observable<Ticket> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.getTicketsUrl + '/' + id, RequestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };
   }
+
 
   private handleError (error: Response | any) {
     // In a real world app, we might use a remote logging infrastructure

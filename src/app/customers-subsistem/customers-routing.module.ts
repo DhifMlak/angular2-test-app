@@ -1,9 +1,10 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule }               from '@angular/core';
+import { RouterModule, Routes }   from '@angular/router';
 
 import { CustomersComponent }     from './customers.component';
 import { TicketFormComponent }    from './ticket-form/ticket-form.component';
-import { ReviewTicketsComponent } from './review-tickets/review-tickets.component';
+import { ListTicketsComponent }   from './list-tickets/list-tickets.component';
+import { ShowTicketComponent }    from './show-ticket/show-ticket.component';
 
 const customerRoutes: Routes = [
   {
@@ -16,12 +17,12 @@ const customerRoutes: Routes = [
       },
       {
         path: 'tickets',
-        component: ReviewTicketsComponent
+        component: ListTicketsComponent
       },
-      // {
-      //   path: 'tickets/:id',
-      //   component: showTicketComponent
-      // }
+      {
+        path: 'tickets/:id',
+        component: ShowTicketComponent
+      }
     ]
   }
   // { path: 'customers/create-ticket',        component: TicketFormComponent },

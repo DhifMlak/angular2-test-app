@@ -1,0 +1,21 @@
+<div *ngIf="ticket">
+
+  <h2>Ticket Id: {{ ticket.id }}</h2>
+
+  <h3>Title: </h3>
+  {{ ticket.title }}
+
+  <h3>Category: </h3>
+  {{ ticket.category }}
+
+  <h3>Description: </h3>
+  {{ ticket.description }}
+</div>
+
+<div *ngIf="!ticket">
+  The ticket you're trying to show doesn't exist.
+</div>
+
+<p>
+  <button (click)="goToList()">Back</button>
+</p>
