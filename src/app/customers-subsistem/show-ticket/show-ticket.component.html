@@ -1,4 +1,4 @@
-<div *ngIf="ticket">
+<div *ngIf="ticket"  class="ticket-display">
 
   <h2>Ticket Id: {{ ticket.id }}</h2>
 
@@ -12,7 +12,7 @@
   {{ ticket.description }}
 </div>
 
-<div *ngIf="!ticket">
+<div *ngIf="!ticket" class="no-ticket-message">
   The ticket you're trying to show doesn't exist.
 </div>
 

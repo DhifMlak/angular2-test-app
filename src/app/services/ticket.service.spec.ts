@@ -56,16 +56,6 @@ describe('Ticket Service', function() {
 
   }));
 
-
-
-
-
-
-
-
-
-
-
   let service: TicketService;
   const fakeHttp =  {
     get: () => '',
@@ -76,14 +66,6 @@ describe('Ticket Service', function() {
 
 
 });
-
-
-
-
-
-
-
-
 
 
 // import { TestBed, async, inject } from '@angular/core/testing';

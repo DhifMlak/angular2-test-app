@@ -1,4 +1,9 @@
-<table class="table">
+
+<div *ngIf="(tickets | async)?.length == 0" class="alert alert-info no-tickets" role="alert">
+  <h3> You haven't created any tickets yet </h3>
+</div>
+
+<table *ngIf="(tickets | async)?.length > 0" class="table ticket-list">
   <tr>
     <th> Ticket Id    </th>
     <th> Title        </th>
@@ -10,9 +15,9 @@
     <td class="id-col">          {{ ticket.id                          }}</td>
     <td class="title-col">       {{ ticket.title | truncate: 25         }}</td>
     <td class="category-col">    {{ ticket.category                    }}</td>
-    <td class="description-col"> {{ ticket.description | truncate: 50  }}</td>
+    <td class="description-col"> {{ ticket.description | truncate: 100  }}</td>
   </tr>
-</table>
 
+</table>
 
 

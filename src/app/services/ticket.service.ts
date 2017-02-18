@@ -1,6 +1,7 @@
 import { Injectable }                                from '@angular/core';
 import { Http, Response, Headers, RequestOptions }   from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { ReplaySubject }  from 'rxjs/Rx';
 
 
 import 'rxjs/add/operator/catch';
@@ -11,10 +12,14 @@ import { Ticket } from '../ticket';
 
 @Injectable()
 export class TicketService {
+
+  private tickets$  = new ReplaySubject();
   private backendUrl = "http://localhost:3000";
   private createTicketUrl  = this.backendUrl + "/tickets";
   private getTicketsUrl    = this.backendUrl + "/tickets";
   private getTicketUrl     = this.backendUrl + "/tickets";
+
+
 
   constructor (private http: Http) {}
 
@@ -27,13 +32,20 @@ export class TicketService {
        .catch(this.handleError);
   }
 
-  getTickets(): Observable<Ticket[]> {
+  getTickets(forceRefresh?: boolean): Observable<Ticket[]> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.get(this.getTicketsUrl, RequestOptions)
+    if (!this.tickets$.observers.length || forceRefresh) {
+      this.http.get(this.getTicketsUrl, RequestOptions)
       .map(this.extractData)
-      .catch(this.handleError);
+      .subscribe(
+        tickets => this.tickets$.next(tickets),
+        error   => this.handleError(error)
+      )
+    }
+
+    return this.tickets$
   }
 
   getTicket(id: number | string): Observable<Ticket> {
@@ -41,13 +53,13 @@ export class TicketService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.get(this.getTicketsUrl + '/' + id, RequestOptions)
-      .map(this.extractData)
+      .map(response => response.json() || '' )
       .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     let body = res.json();
-    return body || { };
+    return body || {};
   }
 
 

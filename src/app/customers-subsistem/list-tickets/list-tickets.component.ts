@@ -14,7 +14,6 @@ import { Observable } from 'rxjs/Observable';
 export class ListTicketsComponent implements OnInit {
 
   tickets: Observable<Ticket[]>
-  private selectedId: number;
 
   constructor(
     private service: TicketService,

@@ -2,11 +2,20 @@ import { Injectable }      from '@angular/core';
 import { Observable }      from 'rxjs/Observable';
 
 import { Ticket     }      from '../ticket';
+import { ticketStub }      from './testing-helpers';
 
 @Injectable()
 export class TicketServiceStub{
 
-  private tickets = [
+  private _tickets: Ticket[] = [
+    {
+      "id": 1,
+      "title": "Example Title",
+      "description": "Example Description.",
+      "created_at": "2017-02-15T17:03:29.386Z",
+      "updated_at": "2017-02-15T17:03:29.386Z",
+      "category": "Category A"
+    },
     {
       "id": 8,
       "title": "Dolor ea aut quae nisi animi et voluptatem enim.",
@@ -39,13 +48,29 @@ export class TicketServiceStub{
       "updated_at": "2017-02-15T17:03:29.399Z",
       "category": "Category B"
     }
-  ] as Ticket[];
+  ];
 
+  set tickets(tickets){
+    this._tickets = tickets;
+  };
+
+  get tickets(){
+    return this._tickets;
+  };
+
+  getTicket = jasmine.createSpy('getTickets').and.callFake( (id) => {
+    if(+id == 1){
+      let ticket = ticketStub;
+      return Observable.of(ticket);
+    }
+    else{
+      return Observable.of('');
+    }
+  });
 
   getTickets = jasmine.createSpy('getTickets').and.callFake( () => {
-    let tickets = this.tickets;
+    let tickets = this._tickets;
     return Observable.of(tickets);
-  })
-
+  });
 
 }

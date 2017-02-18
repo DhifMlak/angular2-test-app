@@ -9,3 +9,7 @@
 .table tr:not(:first-child):hover{
   background-color: lightsalmon;
 }
+
+.no-tickets{
+  text-align: center;
+}

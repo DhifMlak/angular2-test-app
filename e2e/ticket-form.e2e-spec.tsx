@@ -1,11 +1,11 @@
-import { TicketSystemPage } from './app.po';
+import { TicketFormPage } from './app.po';
 import { browser, element, by } from 'protractor';
 
 describe('Create ticket Form', function() {
-  let page: TicketSystemPage;
+  let page: TicketFormPage;
 
   beforeEach(() => {
-    page = new TicketSystemPage();
+    page = new TicketFormPage();
     page.navigateTo();
   });
 
@@ -58,12 +58,5 @@ describe('Create ticket Form', function() {
     el.clear()
     expect(page.submitBtn.isEnabled()).toBeFalsy();
   });
-
-
-
-
-
-
-
 
 });

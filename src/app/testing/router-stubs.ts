@@ -25,4 +25,6 @@ export class ActivatedRouteStub {
 
 @Injectable()
 export class RouterStub{
+  navigate(){
+  }
 }
