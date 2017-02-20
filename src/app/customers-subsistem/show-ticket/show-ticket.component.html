@@ -3,13 +3,19 @@
   <h2>Ticket Id: {{ ticket.id }}</h2>
 
   <h3>Title: </h3>
-  {{ ticket.title }}
+  <div class="ticket-title">
+    {{ ticket.title }}
+  </div>
 
   <h3>Category: </h3>
-  {{ ticket.category }}
+  <div class="ticket-category">
+    {{ ticket.category }}
+  </div>
 
   <h3>Description: </h3>
-  {{ ticket.description }}
+  <div class="ticket-description">
+    {{ ticket.description }}
+  </div>
 </div>
 
 <div *ngIf="!ticket" class="no-ticket-message">
@@ -17,5 +23,5 @@
 </div>
 
 <p>
-  <button (click)="goToList()">Back</button>
+  <button class="back-button" (click)="goToList()">Back</button>
 </p>

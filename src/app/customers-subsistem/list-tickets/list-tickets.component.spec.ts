@@ -34,8 +34,8 @@ describe('ListTicketsComponent', () => {
     addPageElements() {
       if (comp.tickets) {
         // have a hero so these elements are now in the DOM
-        this.tableRows = fixture.debugElement.queryAll(By.css('tr:not(:first-child)'))
-        this.firstRow = fixture.debugElement.query(By.css('tr:not(:first-child)'))
+        this.tableRows = fixture.debugElement.queryAll(By.css('tr:not(:first-child)'));
+        this.firstRow = fixture.debugElement.query(By.css('tr:not(:first-child)'));
       }
     }
   }
@@ -47,7 +47,7 @@ describe('ListTicketsComponent', () => {
     page    = new Page();
 
     // On empty mode the service gets no tickets
-    if(mode == 'empty-mode'){
+    if (mode === 'empty-mode'){
       tsSpy = fixture.debugElement.injector.get(TicketService);
       tsSpy.tickets = [];
     }
@@ -79,9 +79,8 @@ describe('ListTicketsComponent', () => {
         ]
       }
     })
-    .compileComponents()
+    .compileComponents();
   }));
-
 
 
   describe('In case there are five tickets on the list', () => {
@@ -97,7 +96,7 @@ describe('ListTicketsComponent', () => {
     });
 
     it('should call navigate when calling on select', () => {
-      let router = fixture.debugElement.injector.get(Router);
+      const router = fixture.debugElement.injector.get(Router);
       spyOn(router, 'navigate');
       comp.onSelect(ticketStub);
       expect(router.navigate).toHaveBeenCalled();
@@ -112,19 +111,19 @@ describe('ListTicketsComponent', () => {
     });
 
     it('should not display a message indicating there are no tickets', () => {
-      let noTicketsDiv = fixture.debugElement.query(By.css('.no-tickets'))
-      if(noTicketsDiv){
+      const noTicketsDiv = fixture.debugElement.query(By.css('.no-tickets'));
+      if (noTicketsDiv) {
         expect(isVisible(noTicketsDiv.nativeElement)).toBeFalsy();
-      }else{
+      }else {
         pass();
       }
-    })
+    });
 
     describe('each row', () => {
       beforeEach( () => {
         tsSpy = fixture.debugElement.injector.get(TicketService);
         first_ticket = tsSpy.tickets[0];
-      })
+      });
 
       it('should display a title', () => {
         expect(page.firstRow.nativeElement.textContent.search(first_ticket.title)).not.toBe(-1);
@@ -137,8 +136,8 @@ describe('ListTicketsComponent', () => {
       it('should display a description', () => {
         expect(page.firstRow.nativeElement.textContent.search(first_ticket.description)).not.toBe(-1);
       });
-    })
-  })
+    });
+  });
 
 
 
@@ -156,13 +155,13 @@ describe('ListTicketsComponent', () => {
     });
 
     it('should display a message indicating there are no tickets', () => {
-      let noTicketsDiv = fixture.debugElement.query(By.css('.no-tickets'))
-      if(noTicketsDiv){
+      const noTicketsDiv = fixture.debugElement.query(By.css('.no-tickets'));
+      if (noTicketsDiv) {
         expect(isVisible(noTicketsDiv.nativeElement)).toBeTruthy();
-      } else{
-        fail("There's no message when there are no tickets");
+      } else {
+        fail('There\'s no message when there are no tickets');
       }
-    })
+    });
 
-  })
+  });
 });

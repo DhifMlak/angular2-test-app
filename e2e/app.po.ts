@@ -12,5 +12,6 @@ export class TicketsListPage {
   navigateTo(url='/customers/tickets') {
     return browser.get(url);
   };
-
 }
+
+
